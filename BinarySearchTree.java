@@ -1,0 +1,50 @@
+package tugas6_BinarySearchTree;
+
+public class BinarySearchTree {
+    Node root;
+
+    public boolean insert(int value) {
+        Node newNode = new Node(value);
+
+        if(root == null){
+            root = newNode;
+        }
+
+        Node current = root;
+        while(true){
+            if(value < current.value){
+                if(current.left == null){
+                    current.left = newNode;
+                    return true;
+                }
+                else{
+                    current = current.left;
+                }
+            }
+            else if(value > current.value){
+                if(current.right == null){
+                    current.right = newNode;
+                    return true;
+                }
+                else{
+                    current = current.right;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+
+    }
+
+    public void contains(int value) {
+        System.out.println("Searching...");
+
+        if(!insert(value)){
+            System.out.printf("Yes, %d exist in the tree", value);
+        }
+        else{
+            System.out.printf("No, %d doesn't exist in the tree", value);
+        }
+    }
+}
